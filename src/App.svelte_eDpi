@@ -1,0 +1,40 @@
+<script>
+	let dpi = 1200;
+	let sensitivity = 1.03;
+	$: edpi = dpi * sensitivity;
+</script>
+
+<form action="">
+	<label for="dpi"> Dpi</label>
+	<input type="number" id="dpi" bind:value={dpi} />
+
+	<label for="sensitivity"> Sensitivity</label>
+	<input
+		type="number"
+		step="0.01"
+		id="sensitivity"
+		bind:value={sensitivity}
+	/>
+
+	<label for="eDpi"> eDpi</label>
+	<input type="number" id="eDpi" value={edpi} />
+</form>
+
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-family: Verdana, Geneva, Tahoma, sans-serif;
+	}
+	input {
+		text-align: center;
+		font-size: 16px;
+		border: 1px black solid;
+		border-radius: 4px;
+	}
+	label {
+		margin-top: 20px;
+		margin-bottom: 5px;
+	}
+</style>
