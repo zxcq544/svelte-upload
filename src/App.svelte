@@ -14,6 +14,9 @@
     files_array = files_array;
     console.log("files array after remove", files_array);
   }
+  function remove_all() {
+    files_array = [];
+  }
   function add_to_files_array() {
     console.log("on change FilesList", files);
     files_array = [...files_array, ...files];
@@ -33,7 +36,7 @@
 <button on:click={send_click_to_input}>
   <span>Add Files</span>
 </button>
-<button class="remove" on:click={remove_from_files}> remove </button>
+<button class="remove" on:click={remove_all}> Remove All </button>
 <div>
   {#if files_array && files_array[0]}
     {#each files_array as file, i}
@@ -80,7 +83,7 @@
     transform: translate(1px, 1px);
   }
   .remove {
-    width: 70px;
+    width: 107px;
     height: 50px;
     line-height: 10px;
     border-radius: 5px;
