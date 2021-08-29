@@ -100,7 +100,7 @@
     text-align: center;
     vertical-align: middle;
     font-weight: bold;
-    box-shadow: 2px 2px 2px indigo;
+    box-shadow: 1px 1px 2px indigo;
     background-color: blueviolet;
     border-color: blueviolet;
     padding: 0px;
