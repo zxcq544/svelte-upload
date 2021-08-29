@@ -27,7 +27,6 @@
     console.log("on change files array", files_array);
     images = files_array.map(URL.createObjectURL);
     files_array.map(URL.revokeObjectURL);
-    // console.log(images);
   }
 </script>
 
