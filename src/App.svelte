@@ -26,25 +26,23 @@
     files_array = [...files_array, ...file_input.files];
     console.log("on change files array", files_array);
     //Loads with readAsDataURL
-    // Promise.all(files_array.map(read_images)).then((values) => {
-    //   images = values;
-    // });
-    // images.map(URL.revokeObjectURL);
-    images = files_array.map(URL.createObjectURL);
+    Promise.all(files_array.map(read_images)).then((values) => {
+      images = values;
+    });
   }
   //Loads with readAsDataURL
-  // function read_images(file) {
-  //   return new Promise((resolve, reject) => {
-  //     let fr = new FileReader();
-  //     fr.onload = () => {
-  //       resolve(fr.result);
-  //     };
-  //     fr.onerror = () => {
-  //       reject(fr);
-  //     };
-  //     fr.readAsDataURL(file);
-  //   });
-  // }
+  function read_images(file) {
+    return new Promise((resolve, reject) => {
+      let fr = new FileReader();
+      fr.onload = () => {
+        resolve(fr.result);
+      };
+      fr.onerror = () => {
+        reject(fr);
+      };
+      fr.readAsDataURL(file);
+    });
+  }
 </script>
 
 <input
@@ -65,11 +63,7 @@
   {#if files_array && files_array[0]}
     {#each files_array as file, i}
       <div class="image_block">
-        <img
-          src={images[i]}
-          alt=""
-          onload="window.URL.revokeObjectURL(this.src)"
-        />
+        <img src={images[i]} alt="" />
         <button class="remove_cross" on:click={() => remove_from_files(i)}>
           X
         </button>
