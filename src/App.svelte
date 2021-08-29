@@ -14,6 +14,7 @@
     images.splice(index, 1);
     files_array = files_array;
     images = images;
+    console.log(images);
     console.log("files array after remove", files_array);
   }
   function remove_all() {
@@ -24,26 +25,15 @@
     console.log("on change FilesList", file_input.files);
     files_array = [...files_array, ...file_input.files];
     console.log("on change files array", files_array);
-    Promise.all(files_array.map(my_readAsDataURL)).then((values) => {
-      images = values;
-    });
-  }
-  function my_readAsDataURL(file) {
-    return new Promise(function (resolve, reject) {
-      let fr = new FileReader();
-      fr.onload = function () {
-        resolve(fr.result);
-      };
-      fr.onerror = function () {
-        reject(fr);
-      };
-      fr.readAsDataURL(file);
-    });
+    images = files_array.map(URL.createObjectURL);
+    files_array.map(URL.revokeObjectURL);
+    // console.log(images);
   }
 </script>
 
 <input
   type="file"
+  accept="image/*"
   style="display: none"
   bind:this={file_input}
   multiple
