@@ -103,6 +103,7 @@
     box-shadow: 2px 2px 2px indigo;
     background-color: blueviolet;
     border-color: blueviolet;
+    padding: 0px;
   }
   button:hover {
     background-color: #985ad2;
