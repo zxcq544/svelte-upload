@@ -49,19 +49,10 @@
   {#if files_array && files_array[0]}
     {#each files_array as file, i}
       <div class="image_block">
-        <!--         <span>
-          {file.name}
-        </span> -->
-        <!-- 				{#await load_preview()} -->
-        <!-- 				<span>loading...</span>}
-				{:then values} -->
         <img src={images[i]} alt="" />
         <button class="remove_cross" on:click={() => remove_from_files(i)}>
           X
         </button>
-        <!-- 				{:catch error}
-					<p style="color: red">{error.message}</p>
-				{/await} -->
       </div>
     {/each}
   {/if}
