@@ -3,6 +3,7 @@
 	let file_input;
 	let index;
 	let images = [];
+	let on_load_complete;
 	function send_click_to_input() {
 		file_input.click();
 	}
@@ -29,6 +30,7 @@
 		Promise.all(files_array.map(read_images)).then((values) => {
 			images = values;
 		});
+		on_load_complete.innerText = "";
 	}
 	//Loads with readAsDataURL
 	function read_images(file) {
@@ -50,7 +52,6 @@
 		});
 		var request = new XMLHttpRequest();
 		request.onload = function (ev) {
-			var on_load_complete = document.getElementById("on_load_complete");
 			on_load_complete.innerText = "Load Complete Successfully";
 			remove_all();
 		};
@@ -74,7 +75,7 @@
 </button>
 <button class="remove" on:click={remove_all}> Remove All </button>
 <button on:click={send_files}>Send files</button>
-<span id="on_load_complete" />
+<span bind:this={on_load_complete} />
 <div style="display:flex">
 	{#if files_array && files_array[0]}
 		{#each files_array as file, i}
