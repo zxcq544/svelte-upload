@@ -52,9 +52,10 @@
 		});
 		var request = new XMLHttpRequest();
 		request.onload = function (ev) {
-			on_load_complete.innerText = "Load Complete Successfully";
+			on_load_complete.innerText = request.responseText;
 			remove_all();
 		};
+
 		request.open("POST", "/upload");
 		request.send(form_data);
 	}
