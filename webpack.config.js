@@ -59,6 +59,8 @@ module.exports = {
 	],
 	devtool: prod ? false : 'source-map',
 	devServer: {
+		host: '0.0.0.0',
+		port: 8080,
 		hot: true,
 		proxy: {
 			'/upload': {
