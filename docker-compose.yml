@@ -8,3 +8,5 @@ services:
       - 8080:8080
     working_dir: /app
     command: sh -c "cd /app && npm run dev"
+    volumes:
+      - ./src/:/app/src/
