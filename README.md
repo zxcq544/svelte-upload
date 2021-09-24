@@ -1,4 +1,4 @@
-# svelte image upload with preview
+# svelte multiple image upload with preview
 This project does simple multiple image upload with preview.
 
 
